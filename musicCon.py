@@ -1,7 +1,7 @@
 import sys
 import os
 import customtkinter as ctk
-import logging
+import logging as lg
 import numpy as np
 import listing as lst
 
@@ -9,15 +9,13 @@ import listing as lst
 ################################
 
 
-
-lg = logging.getLogger(__name__)
-logging.basicConfig(filename='log.log',
-                    level=logging.INFO,
+lg.getLogger(__name__)
+lg.basicConfig(filename='log.log',
+                    level=lg.DEBUG,
                     format="%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s",
-                    datefmt="%Y-%m-%d %H:%M:%S"
+                    datefmt="%Y-%m-%d %H:%M:%S",
+                    filemode='a',
                     )
-
-
 
 ################################
 
@@ -34,6 +32,7 @@ def fonts():
         lg.exception(f"Error in fonts: {e}")
         print(f"Error in fonts: {e}")
 
+"""
 ################################
 def create_musicFrame (root):
     try:
@@ -41,18 +40,18 @@ def create_musicFrame (root):
             master=root,
             bg_color=lst.clrs[2],
             fg_color=lst.clrs[2],
-            corner_radius=lst.crd[0],
-            width = 50,
-            height = 50,
+            width = 100,
+            height = 100,
             )
         frame.grid(
-            row=3,
-            column=0,
-            padx=20,
-            pady=20,
-            ipady=20,
-            ipadx=20,
+            row=0,
+            column=1,
+            padx=5,
+            pady=5,
+            ipady=5,
+            ipadx=5,
             )
+
         lg.info(f"Frame created successfully: {frame}")
         return frame
     except Exception as e:
@@ -62,7 +61,7 @@ def create_addMultipleSongs(root):
     try:
         addMultipleSongsButton = ctk.CTkButton(
             master=root,
-            command=addMultipleSongs,
+            command=addMultipleSongsBUTT,
             corner_radius=lst.crd[0],
             font=fonts(),
             bg_color=lst.clrs[2],
@@ -72,16 +71,16 @@ def create_addMultipleSongs(root):
             height = 50,
             border_width = 5,
             border_spacing = 5,
-            text = "addMultipleSongs",
             )
         addMultipleSongsButton.grid(
             row=0,
-            column=1,
-            padx=20,
-            pady=20,
-            ipady=20,
-            ipadx=20,
+            column=0,
+            padx=5,
+            pady=5,
+            ipady=5,
+            ipadx=5,
             )
+
         lg.info(f"addMultipleSongsButton created successfully: {addMultipleSongsButton}")
         return addMultipleSongsButton
     except Exception as e:
@@ -91,7 +90,7 @@ def create_addSongButton(root):
     try:
         addSongButton= ctk.CTkButton(
             master=root,
-            command=addSong,
+            command=addSongBUTT,
             corner_radius=lst.crd[0],
             font=fonts(),
             bg_color=lst.clrs[2],
@@ -101,16 +100,16 @@ def create_addSongButton(root):
             height = 50,
             border_width = 5,
             border_spacing = 5,
-            text = "addSong",
             )
         addSongButton.grid(
-            row=0,
-            column=2,
-            padx=20,
-            pady=20,
-            ipady=20,
-            ipadx=20,
+            row=1,
+            column=0,
+            padx=5,
+            pady=5,
+            ipady=5,
+            ipadx=5,
             )
+
         lg.info(f"addSongButton created successfully: {addSongButton}")
         return addSongButton
     except Exception as e:
@@ -120,57 +119,37 @@ def create_loadLibraryButton (root):
     try:
         loadLibraryButton = ctk.CTkButton(
             master=root,
-            command=loadLibrary,
-            corner_radius=lst.crd[0],
-            font=fonts(),
-            bg_color=lst.clrs[2],
-            fg_color=lst.clrs[0],
-            border_color=lst.clrs[8],
-            width = 50,
-            height = 50,
-            border_width = 5,
-            border_spacing = 5,
-            text = "loadLibrary",
-            )
-        loadLibraryButton.grid(
-            row=0,
-            column=3,
-            padx=20,
-            pady=20,
-            ipady=20,
-            ipadx=20,
-            )
-        lg.info(f"loadLibraryButton created successfully: {loadLibraryButton}")
-        return loadLibraryButton
-    except Exception as e:
-        lg.exception(f"Error in loadLibraryButton: {e}")
-
-def create_nextButton(root):
-    try:
-        nextButton = ctk.CTkButton(
-            master=root,
-            command=nextBUTT,
+            command=loadLibraryBUTT,
             corner_radius=lst.crd[0],
             font=fonts(),
             bg_color=lst.clrs[0],
-            fg_color=lst.clrs[0],
             border_color=lst.clrs[8],
             width = 50,
             height = 50,
             border_width = 5,
             border_spacing = 5,
-            text = "nextButton",
             )
-        nextButton.grid(
-            row=0,
-            column=4,
-            padx=20,
-            pady=20,
-            ipady=20,
-            ipadx=20,
+        loadLibraryButton.grid(
+            row=1,
+            column=1,
+            padx=5,
+            pady=5,
+            ipady=5,
+            ipadx=5,
             )
+
+        lg.info(f"loadLibraryButton created successfully: {loadLibraryButton}")
+        return loadLibraryButton
     except Exception as e:
-        lg.exception(f'Error in create_nextButton: {e}')
+        lg.exception(f"Error in create_loadLibraryButton: {e}")
+
+
+
+
+
+
+
+
      
 def create_pauseButton(root):
     try:
@@ -180,22 +159,22 @@ def create_pauseButton(root):
             corner_radius=lst.crd[0],
             font=fonts(),
             bg_color=lst.clrs[0],
-            fg_color=lst.clrs[0],
+
             border_color=lst.clrs[8],
             width = 50,
             height = 50,
             border_width = 5,
             border_spacing = 5,
-            text = "pauseButton",
             )
         pauseButton.grid(
             row=0,
-            column=5,
-            padx=20,
-            pady=20,
-            ipady=20,
-            ipadx=20,
+            column=2,
+            padx=5,
+            pady=5,
+            ipady=5,
+            ipadx=5,
             )
+
     except Exception as e:
         lg.exception(f'Error in create_pauseButton: {e}')
 
@@ -203,27 +182,26 @@ def create_playAlbumButton(root):
     try:
         playAlbumButton = ctk.CTkButton(
             master=root,
-            command=playAlbum,
+            command=playAlbumBUTT,
             corner_radius=lst.crd[0],
             font=fonts(),
             bg_color=lst.clrs[0],
-            fg_color=lst.clrs[0],
+
             border_color=lst.clrs[8],
             width = 50,
             height = 50,
             border_width = 5,
             border_spacing = 5,
-            text = "playAlbum",
             )
         playAlbumButton.grid(
             row=0,
-            column=6,
-            padx=20,
-            pady=20,
-            ipady=20,
-            ipadx=20,
-            sticky="n",
+            column=3,
+            padx=5,
+            pady=5,
+            ipady=5,
+            ipadx=5,
             )
+
         lg.info(f"playAlbumButton created successfully: {playAlbumButton}")
         return playAlbumButton
     except Exception as e:
@@ -237,159 +215,77 @@ def create_playButton(root):
         corner_radius=lst.crd[0],
         font=fonts(),
         bg_color=lst.clrs[0],
-        fg_color=lst.clrs[0],
+
         border_color=lst.clrs[8],
         width = 50,
         height = 50,
         border_width = 5,
         border_spacing = 5,
-        text = "playButton",
         )
         playButton.grid(
-                    row=0,
-                    column=7,
-                    padx=20,
-                    pady=20,
-                    ipady=20,
-                    ipadx=20,
-                    )
+            row=0,
+            column=4,
+            padx=5,
+            pady=5,
+            ipady=5,
+            ipadx=5,
+            )
+
     except Exception as e:
         lg.exception(f'Error in playButton: {e}')
         
-def create_stopButton(root):
-    try:
-        stopButton = ctk.CTkButton(
-            master=root,
-            command=stopBUTT,
-            corner_radius=lst.crd[0],
-            font=fonts(),
-            bg_color=lst.clrs[0],
-            fg_color=lst.clrs[0],
-            border_color=lst.clrs[8],
-            width = 50,
-            height = 50,
-            border_width = 5,
-            border_spacing = 5,
-            text = "stopButton",
-            )
 
-        stopButton.grid(
-            row=0,
-            column=8,
-            padx=20,
-            pady=20,
-            ipady=20,
-            ipadx=20,
-            )
+################################
+################################
+################################
+################################
+
+
+
+
+################################
+
+
+def addMultipleSongsBUTT():
+    try:
+        lg.info(f'addMultipleSongsBUTT - MULTIPLE SONGS ADDED TO LIBRARY')
     except Exception as e:
-        lg.exception(f'Error in create_stopButton: {e}')
+        lg.exception(f"Error in addMultipleSongsBUTT: {e}")
 
-def unloadButton(root):
+def addSongBUTT():
     try:
-        unloadButton = ctk.CTkButton(
-            master=root,
-            command=unload,
-            corner_radius=lst.crd[0],
-            font=fonts(),
-            bg_color=lst.clrs[0],
-            fg_color=lst.clrs[0],
-            border_color=lst.clrs[8],
-            width = 50,
-            height = 50,
-            border_width = 5,
-            border_spacing = 5,
-            text = "unload",
-            )
-
-        unloadButton.grid(
-            row=0,
-            column=9,
-            padx=20,
-            pady=20,
-            ipady=20,
-            ipadx=20,
-            )
-
-    except Exception as e:
-        lg.exception(f'Error in unloadButton: {e}')
-        
-
-################################
-################################
-################################
-################################
-
-
-
-def addMultipleSongs():
-    try:
-        lst.firstTextbox.insert('0.1', 'MULTIPLE SONGS ADDED TO LIBRARY,' '\n')
-        lg.info(f'addMultipleSongs - MULTIPLE SONGS ADDED TO LIBRARY')
-    except Exception as e:
-        lg.exception(f"Error in addMultipleSongs: {e}")
-
-def addSong():
-    try:
-        lst.firstTextbox.insert('0.1', 'SONG IS NOW ADDED TO LIBRARY,' '\n')
         lg.info(f'addSong - SONG IS NOW ADDED TO LIBRARY')
     except Exception as e:
         lg.exception(f"Error in addSong: {e}")
 
-def loadLibrary():
+def loadLibraryBUTT():
     try:
-        lst.firstTextbox.insert('0.1', 'LOAD LIBRARY,' '\n')
-        lg.info(f'loadLibrary - '"LOAD LIBRARY")
+        lg.info(f'loadLibraryBUTT - LOAD LIBRARY')
     except Exception as e:
-        lg.exception(f"Error in loadLibrary: {e}")
+        lg.exception(f"Error in loadLibraryBUTT: {e}")
 
-def nextBUTT():
+
+
+def pauseBUTT():
     try:
-        lst.firstTextbox.insert('0.1', 'NEXT TRACK,' '\n')
-        lg.info(f'nextBUTT - '"NEXT TRACK")
+        lg.info(f'pauseBUTT - '"NOW PAUSED")
     except Exception as e:
-        lg.exception(f'Error in nextBUTT: {e}')
-        
-def playAlbum():
+        lg.exception(f'Error in pauseBUTT: {e}')
+
+
+
+def playAlbumBUTT():
     try:
-        lst.firstTextbox.insert('0.1', 'PLAY ALBUM,' '\n')
         lg.info(f'playAlbum - PLAY ALBUM')
     except Exception as e:
         lg.exception(f'Error in playAlbum: {e}')
 
+
 def playBUTT():
     try:
-        
-        lst.firstTextbox.insert('0.1', 'NOW PLAYING,' '\n')
         lg.info(f'playBUTT - '"NOW PLAYING")
 
     except Exception as e:
         lg.exception(f'Error in playBUTT: {e}')
 
-def pauseBUTT():
-    try:
-        lst.firstTextbox.insert('0.1', 'NOW PAUSED,' '\n')
-        lg.info(f'pauseBUTT - '"NOW PAUSED")
-    except Exception as e:
-        lg.exception(f'Error in pauseBUTT: {e}')
-        
-def replayBUTT():
-    try:
-        lst.firstTextbox.insert('0.1', 'REPLAYING TRACK,' '\n')
-        lg.info(f'replayBUTT - REPLAYING TRACK')
-    except Exception as e:
-        lg.exception(f'Error in replayBUTT: {e}')
-
-def stopBUTT():
-    try:
-        lst.firstTextbox.insert('0.1', 'NOW STOPPED,' '\n')
-        lg.info(f'stopBUTT - '"NOW STOPPED")
-    except Exception as e:
-        lg.exception(f'Error in stopBUTT: {e}')
-
-
-
-
-
-
-
-################################
+"""
