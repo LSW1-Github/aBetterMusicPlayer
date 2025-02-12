@@ -5,12 +5,14 @@ import logging as lg
 import numpy as np
 
 lg.getLogger(__name__)
-lg.basicConfig(filename='log.log',
-                    level=lg.DEBUG,
-                    format="%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s",
-                    datefmt="%Y-%m-%d %H:%M:%S",
-                    filemode='a',
-                    )
+log_file = "lgFile.log"
+lg.basicConfig(
+    filename=log_file,
+    level=lg.DEBUG,
+    format="%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    filemode='w',
+    )
 
 
 
